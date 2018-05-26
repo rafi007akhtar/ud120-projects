@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-import pickle # NOTE: Can't import this module
-import cPickle # NOTE: Can't import this module
+import pickle 
+import cPickle 
 import numpy
 
 from sklearn import cross_validation
@@ -53,7 +53,7 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
 
     ### feature selection, because text is super high dimensional and 
     ### can be really computationally chewy as a result
-    selector = SelectPercentile(f_classif, percentile=10)
+    selector = SelectPercentile(f_classif, percentile=10) # NOTE: changed, percentile was 1
     selector.fit(features_train_transformed, labels_train)
     features_train_transformed = selector.transform(features_train_transformed).toarray()
     features_test_transformed  = selector.transform(features_test_transformed).toarray()
